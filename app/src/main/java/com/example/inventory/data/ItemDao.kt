@@ -21,7 +21,8 @@ import androidx.room.Update
 
 @Dao
 interface ItemDao {
-    @Insert
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: Item)
 
     @Update

@@ -11,6 +11,7 @@ Copyright (c) 2022 MJKonceptz. All rights reserved.
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ColumnInfo
+import java.text.NumberFormat
 
 /* Mark Class Item with the keyword: data &  Mark the data class with @Entity(table) */
 
@@ -29,4 +30,9 @@ data class Item (
 
     @ColumnInfo(name = "quantity")
     val quantityInStock: Int
+
 ) //end: Item class
+
+/**Create an extension to format price & don't forget to import java.text.NumberFormat.*/
+fun Item.getFormattedPrice(): String =
+    NumberFormat.getCurrencyInstance().format(itemPrice)
