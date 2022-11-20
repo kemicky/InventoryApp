@@ -12,6 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Author: Kemmy MO Jones.
+ * Date:   Nov 20th, 2022.
+ * Topic:  Data Persistence (PathWay 2 - Use Room For Data Persistence).
  */
 
 plugins {
@@ -74,4 +78,4 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-}
+} //end:dependencies
