@@ -1,4 +1,4 @@
-Inventory - Starter Code
+Inventory - Starter Code Solution
 ==================================
 
 Starter code for Android Basics in Kotlin.
