@@ -16,5 +16,11 @@
 package com.example.inventory
 
 import android.app.Application
+import com.example.inventory.data.ItemRoomDatabase
 
-class InventoryApplication : Application()
+class InventoryApplication : Application(){
+    /* If this line of code prompt an error
+     "Type KProperty<...> has no method getValue(...) and thus cannot serve as delegate",
+      Solution: invalidate cache and restart  will clear that error */
+    val database: ItemRoomDatabase by lazy { ItemRoomDatabase.getDatabase(this) }
+} //end
