@@ -19,7 +19,10 @@ Copyright (c) 2022 MJKonceptz. All rights reserved.
 
 class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
 
+    /**
+     * Ensure To Cache All The Data using Live Data */
     val allItems: LiveData<List<Item>> = itemDao.getItems().asLiveData()
+
 
     fun isStockAvailable(item: Item): Boolean {
         return (item.quantityInStock > 0)
