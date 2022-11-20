@@ -2,11 +2,11 @@ package com.example.inventory
 
 
 /**
-Author: Kemmy MO Jones
-Project: InventoryApp
-Date: 2022/11/20
-Email: mjkonceptz@gmail.com
-Copyright (c) 2022 MJKonceptz. All rights reserved.
+ * Author: Kemmy MO Jones
+ * Project: InventoryApp
+ * Date: 2022/11/20
+ * Email: mjkonceptz@gmail.com
+ * Copyright (c) 2022 MJKonceptz. All rights reserved.
  */
 
 import android.view.LayoutInflater

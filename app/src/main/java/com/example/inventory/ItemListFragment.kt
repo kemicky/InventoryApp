@@ -21,14 +21,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.inventory.databinding.ItemListFragmentBinding
 
 /**
  * Main fragment displaying details for all items in the database.
+ *
+ * Author: Kemmy MO Jones
+ * Project: InventoryApp
+ * Date: 2022/11/20
+ * Email: mjkonceptz@gmail.com
+ * Copyright (c) 2022 MJKonceptz. All rights reserved.
  */
+
 class ItemListFragment : Fragment() {
+    private val viewModel: InventoryViewModel by activityViewModels {
+        InventoryViewModelFactory(
+            (activity?.application as InventoryApplication).database.itemDao()
+        )
+    } //end: ListFragment
 
     private var _binding: ItemListFragmentBinding? = null
     private val binding get() = _binding!!
@@ -40,16 +53,41 @@ class ItemListFragment : Fragment() {
     ): View? {
         _binding = ItemListFragmentBinding.inflate(inflater, container, false)
         return binding.root
-    }
+
+    }//end: onCreateView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = ItemListAdapter {
+            val action =
+                ItemListFragmentDirections.actionItemListFragmentToItemDetailFragment(it.id)
+            this.findNavController().navigate(action)
+
+        } //end: ItemListAdapter
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.recyclerView.adapter = adapter
+
+        /**
+         * Attach an observer on the allItems list to update the UI automatically when the data
+         changes.
+         */
+
+        viewModel.allItems.observe(this.viewLifecycleOwner) { items ->
+            items.let {
+                adapter.submitList(it)
+            }
+        }//end: viewModel
+
         binding.floatingActionButton.setOnClickListener {
             val action = ItemListFragmentDirections.actionItemListFragmentToAddItemFragment(
                 getString(R.string.add_fragment_title)
             )
             this.findNavController().navigate(action)
-        }
-    }
-}
+
+        }//end: floatingActionButton
+
+    }// end: onViewCreated
+
+}//end: ItemListFragment
