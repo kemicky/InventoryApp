@@ -1,11 +1,11 @@
-Inventory - Starter Code Solution
-==================================
+Inventory - Starter Code Complete Solution
+==========================================
 
 Starter code for Android Basics in Kotlin.
 
  - Author: Kemmy MO Jones.
  - Date:   Nov 20th, 2022.
- - Topic:  Data Persistence (PathWay 2 - Use Room For Data Persistence).
+ - Topic:  Data Persistence (PathWay 2 - Use Room For Data Persistence => Inventory App).
 
 Introduction
 ------------
